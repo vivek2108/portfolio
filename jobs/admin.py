@@ -5,4 +5,4 @@ from .models import Job
 
 
 admin.site.register(Job)
-admin.site.register(Blog)
+

@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
-    <title>Vivek Rungta</title>
+    <title>Vivek's Blogs</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/album/">
 
@@ -26,7 +26,7 @@
             <div class="navbar-nav ml-auto">
                 <a class="nav-link" href="http://www.google.co.in/">Twitter</a>
                 <a class="nav-link" href="{% static 'VivekRungta.pdf' %}">Resume</a>
-                <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
+                <a class="nav-link active" href="{% url 'allblogs' %}">Blog</a>
             </div>
         </div>
     </nav>
@@ -36,23 +36,23 @@
 
     <section class="jumbotron text-center">
         <div class="container">
-            <h1>Hi, I'm Vivek.</h1>
-            <p class="lead text-muted">This is my first Django website.</p>
-            <p>
-                <a href="mailto:vivekrungta21@gmail.com" class="btn btn-primary my-2">Mail Me</a>
-            </p>
-            <img src="{% static 'vivek.JPG' %}" height="300"/>
+            <h1>Welcome to Vivek's Blogs.</h1>
         </div>
     </section>
     <div class="album py-5 bg-light">
         <div class="container">
+            <h2>Latest Posts</h2>
+            <hr />
             <div class="row">
-                {% for job in jobs.all %}
+
+                {% for blog in blogs.all %}
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
-                        <img class="card-img-top" src="{{ job.image.url }}"/>
+                        <a href="{% url 'detail' blog.id %}"><h3>{{ blog.title }}</h3></a>
+                        {{ blog.pub_date_pretty }}
+                        <img class="card-img-top" src="{{ blog.image.url }}"/>
                         <div class="card-body">
-                            <p class="card-text">{{ job.summary }}</p>
+                            <p class="card-text">{{ blog.summary }}</p>
                         </div>
                     </div>
                 </div>
